@@ -4,7 +4,7 @@
 
 <section>
   <div class="scorePanel">
-    <div class="scoreStatus">
+    <div class="scoreStatus boomer">
       <h3>Boomers</h3>
       <div class="score">{$score.boomers}</div>
     </div>
@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="scorePanel">
-    <div class="scoreStatus">
+    <div class="scoreStatus zoomer">
       <h3>Zoomers</h3>
       <div class="score">{$score.zoomers}</div>
     </div>
@@ -35,8 +35,24 @@
     padding-top: 1rem;
   }
 
+  button {
+    cursor: pointer;
+  }
+
+  .boomer h3 {
+    font-family: "Luckiest Guy";
+  }
+
+  .zoomer h3 {
+    font-family: Megrim;
+  }
+
   .scorePanel {
+    line-height: 1rem;
     background-color: navajowhite;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
     transform: rotateX(15deg) rotateY(-10deg);
     box-shadow: 2.7px 2.1px 2.7px rgba(0, 0, 0, 0.111),
       5.7px 4.5px 8px rgba(0, 0, 0, 0.202),
@@ -45,17 +61,19 @@
   }
 
   .scoreStatus {
-    padding: 1rem 2rem;
+    padding: 1rem clamp(1rem, 3vmin, 2rem);
     display: flex;
+    flex: 1 0 auto;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
   }
 
   .score {
-    font-size: 4rem;
+    font-size: clamp(1.5rem, 4vmin, 4rem);
     font-weight: 700;
     line-height: 1;
-    width: 3ch;
+    margin-left: 1ch;
+    min-width: 1ch;
     text-align: right;
   }
 
@@ -70,7 +88,7 @@
   }
 
   h3 {
-    font-size: 2rem;
+    font-size: clamp(1rem, 5vmin, 3rem);
     margin: 0;
   }
 </style>

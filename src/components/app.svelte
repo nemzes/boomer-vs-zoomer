@@ -1,6 +1,7 @@
 <script>
   import { Router, Route } from "svelte-routing";
 
+  import Home from "./home.svelte";
   import Nav from "./nav.svelte";
   import Scoring from "./scoring.svelte";
   import Board from "./board.svelte";
@@ -11,6 +12,7 @@
 
 <Router {url}>
   <main>
+
     <Route path="question/:id" let:params>
       <div class="scoring">
         <Scoring />
@@ -22,6 +24,10 @@
         <Nav id={+params.id} />
       </div>
     </Route>
+
+    <Route path="/">
+      <Home />
+    </Route>
   </main>
 </Router>
 
@@ -31,6 +37,7 @@
   }
 
   :global(body) {
+    font-family: 'Rampart One';
     padding: 0;
   }
 

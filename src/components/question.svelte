@@ -7,16 +7,20 @@
 </script>
 
 <article class={`${q.type} ${current ? "current" : ""}`}>
-  <div class="cardFace prompt">
-    <h1>{q.type}</h1>
-    <h2>Question {id + 1}</h2>
-    <p>{q.prompt}</p>
-  </div>
-  <div class="cardFace answer">
-    <h1>{q.type}</h1>
-    <h2>Answer {id + 1}</h2>
-    <p>{q.answer}</p>
-  </div>
+  <section class="cardFace prompt">
+    <header>
+      <h1>{q.type}</h1>
+      <h2>Q {id + 1}</h2>
+    </header>
+    <div>{@html q.prompt}</div>
+  </section>
+  <section class="cardFace answer">
+    <header>
+      <h1>{q.type}</h1>
+      <h2>A {id + 1}</h2>
+    </header>
+    <div>{@html q.answer}</div>
+  </section>
 </article>
 
 <style>
@@ -24,10 +28,22 @@
     display: contents;
   }
 
+  section > header {
+    align-items: start;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
   h1 {
-    font-size: 3rem;
+    font-size: clamp(1rem, 7vmin, 4rem);
     margin: 0;
     text-transform: uppercase;
+  }
+
+  h2 {
+    font-size: clamp(.8rem, 5vmin, 3rem);
+    margin: 0;
   }
 
   .boomer .prompt {
@@ -40,7 +56,7 @@
     color: darkslategrey;
   }
 
-  .boomer h1 {
+  .boomer header {
     font-family: "Luckiest Guy";
   }
 
@@ -54,7 +70,7 @@
     color: sandybrown;
   }
 
-  .zoomer h1 {
+  .zoomer header {
     font-family: Megrim;
   }
 
@@ -64,10 +80,30 @@
     padding: 2rem;
     position: absolute;
     inset: 0 0 0 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cardFace > div {
+    font-size: 2rem;
+    letter-spacing: -.1em;
+    flex: 1 1 auto;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  :global(.cardFace img) {
+    max-height: 90%;
+    max-width: 90%;
+    padding: 1rem;
   }
 
   .prompt {
     transform: translateZ(2px);
+  }
+
+  .prompt > div {
+    font-size: 7vmin;
   }
 
   .prompt * {
@@ -82,5 +118,11 @@
   .answer {
     transform: rotateY(180deg) translateZ(1px);
     backface-visibility: visible;
+  }
+
+  .answer > div {
+    font-size: clamp(1.5rem, 8vmin, 5rem);
+    display: grid;
+    place-content: center;
   }
 </style>

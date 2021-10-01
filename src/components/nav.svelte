@@ -37,7 +37,7 @@
     background-color: chocolate;
     color: whitesmoke;
     flex: 1 1 auto;
-    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-size: clamp(.5rem, 2vw, 1.5rem);
     font-weight: 700;
     text-align: center;
     padding: 0.5em;
